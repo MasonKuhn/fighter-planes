@@ -43,14 +43,19 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(horizontalInput, verticalInput,0) * Time.deltaTime * speed);
-        if (transform.position.x > horizontalScreenSize || transform.position.x <= -horizontalScreenSize)
+ if (transform.position.x > 11.5f || transform.position.x <= -11.5f)
         {
-            transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
+            transform.position = new Vector3(transform.position.x * -1,
+            transform.position.y, 0);
         }
-        if (transform.position.y > verticalScreenSize || transform.position.y < -verticalScreenSize)
+        if (transform.position.y > 1f)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
+            transform.position = new Vector3(transform.position.x, 1f,0);
         }
+        else if (transform.position.y < -4f)
+        {
+            transform.position = new Vector3(transform.position.x, -4f, 0);
+        }    
     }
 
     void Shooting()
