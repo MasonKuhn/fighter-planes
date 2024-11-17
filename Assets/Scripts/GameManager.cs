@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI restartText;
     public TextMeshProUGUI powerupText;
+    public TextMeshProUGUI liveText;
 
     private int score;
 
@@ -71,7 +72,11 @@ public class GameManager : MonoBehaviour
         score = score + newScore;
         scoreText.text = "Score: " + score;
     }
-
+    public void liveCounter(int livess)
+    {
+        liveText.text = "Lives: " + livess;
+    }
+    
     public void GameOver()
     {
         isPlayerAlive = false;
