@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(new Vector3(horizontalInput, verticalInput,0) * Time.deltaTime * speed);
- if (transform.position.x > 11.5f || transform.position.x <= -11.5f)
+        if (transform.position.x > 11.5f || transform.position.x <= -11.5f)
         {
             transform.position = new Vector3(transform.position.x * -1,
             transform.position.y, 0);
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
         {
             hasShield = false;
             shield.SetActive(false);
+            gameManager.PlayPowerDown();
             //lose the shield
             //no longer have a shield
         }
@@ -119,6 +120,7 @@ public class Player : MonoBehaviour
         speed = 6f;
         thruster.gameObject.SetActive(false);
         gameManager.UpdatePowerupText("");
+        gameManager.PlayPowerDown();
     }
 
     IEnumerator ShootingPowerDown()
@@ -126,6 +128,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(3f);
         shooting = 1;
         gameManager.UpdatePowerupText("");
+        gameManager.PlayPowerDown();
     }
 
     private void OnTriggerEnter2D(Collider2D whatIHit)
