@@ -84,13 +84,27 @@ public class Player : MonoBehaviour
     {
         if (hasShield == false)
         {
+            ShieldSprite();
             lives--;
         } else if (hasShield == true)
         {
+            hasShield = false;
+            shield.SetActive(false);
             //lose the shield
             //no longer have a shield
         }
+    public void ShieldSprite()
+    {
+        if (hasShield == false)
+        {
+            shield.SetActive(false);
+        }
+        else if (hasShield == true)
+        {
+            shield.SetActive(true);
 
+        }
+    }
         if (lives == 0)
         {
             gameManager.GameOver();
